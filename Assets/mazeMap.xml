@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" source="../../../GhostMaze/Assets/desert_spacing.tsx"/>
+ <tileset firstgid="49" name="desert" tilewidth="32" tileheight="32">
+  <image source="../examples/tmw_desert_spacing.png" width="265" height="199"/>
+  <tile id="9">
+   <properties>
+    <property name="c" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Path" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzVlVEOwjAMQ/fdI+0Yu/9h+AGpCrFjJ4AGUjRtsMR9tctx3P9z3rQ+pe961rld2e9Y7T0cfW5v9h2bgfQpcxcppgFpZmtD+ljvFXrGe6bB4VbpQ2tj911vIL6VPrRG15cON5Zfx+PMM91MZc93feq6dt9NzhqFa9Snri/mwuEy4ceYoPNkUohzpc/l4LBn3lX5ZVflXF7hWp0FE34sx9GHij6VfUcf82SmF+lT/fiqqI/5MFsj2m9Fn+LpXV/Gt8p01Ij2He3hCj0Yv6gJMYzPIjMlH8ivzH/X8a4RsWQMslwzf6j6sr1QnrH/EpYBlKeKH8o6m4FywvqxvCN+LAeVD6MnmV7lvFT5uVWdGYi9oi+b4zBUzuEJvyoPaA57X6muPjXX1fsVzwm/bC/RviL93+BX+U7hovoR9Y/6FA0KD9WP2Xr22vUpWjrcKm8wzpEf6ufmsZOXrj6Vm8uxWp+SD7fvxIdOflV/TDgqec/0KXN+wTHT58zpcFT6IH2dOUi/ytHhd8f6h88DBWZ2eA==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" visible="0"/>
+</map>
