@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="desert_spacing" tilewidth="32" tileheight="32">
+  <image source="../../../../../Program Files (x86)/Tiled/examples/tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzVlEEOwkAMAzn3Gfz/kVxAqlaxM04XVJBWqJQmzsTu43H/z3HTs0vf832O07f7nzvnGom+tLa753oofbQvra3u0dmUvq5vVVNdr/fobJ0+NZu7nnrDze70qRlTX049QfRRjm4mmqnq97O+idcdT5Kpjuuqj85H97qbn2NC/TjhtNbq9O1i5Z6t9FF+xPv0GeLhCT+X447BpEZVk+rruCV6iR8/Z9Xneisd6b6Pprbyn+rtdKiexPuk16pP9aF+6fp3nJ3/Vh5uvjSjybuF5iNh4zw08afjR3JA8025KQ4rP9pnyi3RSfmlp3tnKPZEX9UnYdjtnO7X6XN5SPvQM9VHc909P+FJ+VW7VHtV+r/BL81nxyXJE8nvJJ/d/l2PqudZH9FyxU/ufUD0uXo78kj2PNFHuaUcu/lIPtK6V3yY5Jf64wpHkvdKH+nzC46VvqTPhCOpo/RN+ij9lGPC747nHz4vwdl2qQ==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1"/>
+</map>
