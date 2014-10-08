@@ -195,7 +195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c02cc8d6f238e47559ca03d1f1a70149, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c02cc8d6f238e47559ca03d1f1a70149, type: 3}
       propertyPath: m_LocalPosition.y
@@ -203,7 +203,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c02cc8d6f238e47559ca03d1f1a70149, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c02cc8d6f238e47559ca03d1f1a70149, type: 3}
       propertyPath: m_LocalScale.z
@@ -499,7 +499,7 @@ Transform:
   m_PrefabInternal: {fileID: 384360320}
   m_GameObject: {fileID: 738429286}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: 5}
+  m_LocalPosition: {x: -6, y: -5, z: 2}
   m_LocalScale: {x: 3, y: .00999999978, z: 3}
   m_Children: []
   m_Father: {fileID: 485709193}
@@ -1748,12 +1748,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1375700054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b29405684a2674fac922f15dd2e0398e, type: 3}
+  m_Script: {fileID: 11500000, guid: e37f81e2fb31b4d0783a321386325573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1591578035}
-  offset: {x: 0, y: -.100000001, z: -10}
-  dampTime: .300000012
+  offset: {x: 0, y: 0, z: -5}
+  dampTime: .5
 --- !u!50 &1375700061
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1954,6 +1954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 150
+  sanity: 100
 --- !u!1001 &1693422200
 Prefab:
   m_ObjectHideFlags: 0
