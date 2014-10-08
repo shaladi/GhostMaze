@@ -1426,10 +1426,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1375700054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b29405684a2674fac922f15dd2e0398e, type: 3}
+  m_Script: {fileID: 11500000, guid: e37f81e2fb31b4d0783a321386325573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1591578035}
+  offset: {x: 0, y: 0, z: -10}
   dampTime: .300000012
 --- !u!50 &1375700061
 Rigidbody2D:
@@ -1459,6 +1460,7 @@ GameObject:
   - 114: {fileID: 1591578041}
   - 61: {fileID: 1591578040}
   - 50: {fileID: 1591578037}
+  - 119: {fileID: 1591578042}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1515,7 +1517,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591578035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 420.511047, y: -351.85614, z: 0}
+  m_LocalPosition: {x: 433.597748, y: -332.953094, z: 0}
   m_LocalScale: {x: 70, y: 70, z: 1}
   m_Children: []
   m_Father: {fileID: 582397888}
@@ -1543,6 +1545,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10000
+  sanity: 10
+--- !u!119 &1591578042
+Projector:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591578035}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: .100000001
+  m_FarClipPlane: 100
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 0
+  m_OrthographicSize: 10
+  m_Material: {fileID: 0}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1972834654
 GameObject:
   m_ObjectHideFlags: 0
