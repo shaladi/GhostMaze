@@ -12,14 +12,15 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			RestartGame();
-		}
+//		if (Input.GetKeyDown(KeyCode.Space)) {
+//			RestartGame();
+//		}
 	}
 
 	private void BeginGame () {
 		mazeInstance = Instantiate(mazePrefab) as Maze;
-		StartCoroutine(mazeInstance.Generate());
+		Coroutine generator = StartCoroutine(mazeInstance.Generate());
+
 	}
 
 	private void RestartGame () {
