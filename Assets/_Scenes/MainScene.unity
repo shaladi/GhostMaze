@@ -337,6 +337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   sanity: 100
+  beacon: {fileID: 100004, guid: 7eac58226ed58da488faacc59b9ecdfe, type: 2}
+  dropRate: 1
 --- !u!23 &619960979
 Renderer:
   m_ObjectHideFlags: 0
