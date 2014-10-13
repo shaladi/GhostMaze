@@ -32,9 +32,6 @@ public class Maze : MonoBehaviour {
 	}
 
 	public IEnumerator Generate () {
-		if (dynamicPrefab != null) {
-			Destroy (dynamicPrefab);
-		}
 		WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 		cells = new MazeCell[size.x, size.y];
 		List<MazeCell> activeCells = new List<MazeCell>();
@@ -43,7 +40,6 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-		Instantiate (dynamicPrefab);
 
 	}
 

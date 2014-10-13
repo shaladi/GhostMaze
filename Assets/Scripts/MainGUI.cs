@@ -9,8 +9,12 @@ public class MainGUI : MonoBehaviour {
 	public float barDisplay = 100;
 	// Use this for initialization
 	void OnGUI () {
-		emptyTex.SetPixels (Color.red);
-		fullTex.SetPixels (Color.green);
+		Color[] red = new Color[1];
+		red[0] = Color.red;
+		Color[] green = new Color[1];
+		green[0] = Color.green;
+		emptyTex.SetPixels (red);
+		fullTex.SetPixels (green);
 		GUI.BeginGroup (new Rect (pos.x, pos.y, size.x, size.y));
 			GUI.Box (new Rect (0, 0, size.x, size.y), emptyTex);
 			GUI.BeginGroup(new Rect(0,0, size.x * barDisplay, size.y));
