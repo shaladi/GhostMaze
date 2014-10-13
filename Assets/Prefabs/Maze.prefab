@@ -46,7 +46,7 @@ MonoBehaviour:
   generationStepDelay: 0
   passagePrefab: {fileID: 11400000, guid: 4db582300649e4e399ee4a2665f9e8e6, type: 2}
   wallPrefab: {fileID: 11400000, guid: 2970089c471ef4c599835c1992954af5, type: 2}
-  dynamicPrefab: {fileID: 100002, guid: ca4b3e67244d24a8ba6b4fa3a7bd79f3, type: 2}
+  dynamic: {fileID: 100000, guid: 4db582300649e4e399ee4a2665f9e8e6, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

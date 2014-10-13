@@ -13,7 +13,7 @@ public class Maze : MonoBehaviour {
 	public MazePassage passagePrefab;
 	public MazeWall wallPrefab;
 
-	public GameObject dynamicPrefab;
+	public GameObject dynamic;
 	
 	private MazeCell[,] cells;
 
@@ -32,6 +32,7 @@ public class Maze : MonoBehaviour {
 	}
 
 	public IEnumerator Generate () {
+		dynamic.SetActive (false);
 		WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 		cells = new MazeCell[size.x, size.y];
 		List<MazeCell> activeCells = new List<MazeCell>();
@@ -40,6 +41,7 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
+		dynamic.SetActive (true);
 
 	}
 
