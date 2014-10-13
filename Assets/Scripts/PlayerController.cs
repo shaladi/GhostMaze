@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -82,12 +82,23 @@ public class PlayerController : MonoBehaviour {
 
         // Drop a beacon.
         if ((Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.B)) && (Time.time > nextDrop)) {
-            if (current_beacon_count < MAX_BEACON_COUNT){
+            if (current_beacon_count < MAX_BEACON_COUNT) {
                 nextDrop = Time.time + dropRate;
                 current_beacon_count++;
                 Instantiate (beacon, transform.position, Quaternion.identity);
-            }else{
+            } else {
                 // TODO(anyone! Please display a text or play a sound to indicate the player is out of beacons.")
+            }
+        }
+
+    }
+
+    /* Collisions */
+    void OnTriggerStay2D (Collider2D other) {
+        if (other.gameObject.tag == "Beacon") {
+            if (Input.GetKey (KeyCode.P)) {
+                Destroy (other.gameObject.transform.parent.gameObject);
+                current_beacon_count--;
             }
         }
     }

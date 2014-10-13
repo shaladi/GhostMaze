@@ -210,7 +210,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106709
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ca4b3e67244d24a8ba6b4fa3a7bd79f3, type: 2}
   m_RootGameObject: {fileID: 1992972729}
   m_IsPrefabParent: 0
@@ -274,8 +275,8 @@ GameObject:
   - 33: {fileID: 619960980}
   - 23: {fileID: 619960979}
   - 114: {fileID: 619960978}
-  - 61: {fileID: 619960977}
-  - 50: {fileID: 619960976}
+  - 50: {fileID: 619960977}
+  - 61: {fileID: 619960976}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -295,12 +296,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1992972730}
   m_RootOrder: 0
---- !u!50 &619960976
+--- !u!61 &619960976
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619960974}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
+--- !u!50 &619960977
 Rigidbody2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5000000, guid: ca4b3e67244d24a8ba6b4fa3a7bd79f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 257664520}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 619960974}
   m_Mass: 1
   m_LinearDrag: 0
@@ -309,20 +320,8 @@ Rigidbody2D:
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
---- !u!61 &619960977
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: ca4b3e67244d24a8ba6b4fa3a7bd79f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 257664520}
-  m_GameObject: {fileID: 619960974}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
 --- !u!114 &619960978
 MonoBehaviour:
   m_ObjectHideFlags: 0
