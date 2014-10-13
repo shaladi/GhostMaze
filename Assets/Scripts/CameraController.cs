@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	public GameObject player;
-	public Vector3 offset = new Vector3(0,0,-5);
+	public Vector3 offset = new Vector3(0,0,-10);
 	public float dampTime = 0.5f;
 	private Vector3 velocity = Vector3.zero;
 

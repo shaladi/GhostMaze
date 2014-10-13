@@ -5,7 +5,7 @@ public class PointLightMovement : MonoBehaviour {
 
 	public GameObject player;
 	public Vector3 offset = new Vector3(0,0,-2);
-	public float dampTime = 0.5f;
+	public float dampTime = 0.1f;
 	private Vector3 velocity = Vector3.zero;
 	
 	// Use this for initialization
