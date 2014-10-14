@@ -30,7 +30,11 @@ public class MazeCell : MonoBehaviour {
 	}
 
 	public MazeCellEdge GetEdge (MazeDirection direction) {
-		return edges[(int)direction];
+		try {
+			return edges[(int)direction];
+		} catch (UnityException) {
+			return null;
+		}
 	}
 
 	public void SetEdge (MazeDirection direction, MazeCellEdge edge) {
