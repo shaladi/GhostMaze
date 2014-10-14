@@ -16,10 +16,21 @@ public class Maze : MonoBehaviour {
 	public GameObject dynamic;
 	
 	private MazeCell[,] cells;
+	private int cellSize = 4;
+
+	public int numGhosts;
+	public Transform Ghosts;
 
 	public IntVector2 RandomCoordinates {
 		get {
 			return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.y));
+		}
+	}
+
+	public Vector3 RandomCoordinates3 {
+		get {
+			return new Vector3(Random.Range(-size.x/2 + 1, size.x/2 - 1)*cellSize, 
+			                   Random.Range(-size.y/2 + 1, size.y/2 - 1)*cellSize, 0); 
 		}
 	}
 
@@ -41,8 +52,12 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-		dynamic.SetActive (true);
 
+		for (int i = 0; i < numGhosts; i++) {
+			Instantiate(Ghosts, RandomCoordinates3, Quaternion.identity);
+		}
+
+		dynamic.SetActive (true);
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
