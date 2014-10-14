@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class Maze : MonoBehaviour {
 
 	public IntVector2 size;
+	public int numGhosts;
+	public GhostController ghostPrefab;
 
 	public MazeCell cellPrefab;
 
@@ -16,7 +18,6 @@ public class Maze : MonoBehaviour {
 	public GameObject dynamic;
 	
 	private MazeCell[,] cells;
-
 	public IntVector2 RandomCoordinates {
 		get {
 			return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.y));
@@ -41,8 +42,19 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
+		int numCells = size.x * size.y;
+		for (int i = 0; i < numGhosts; ++i) {
+			int idx = Random.Range (0, numCells);
+			MazeCell cell = cells[idx%size.x, (int)idx/size.x];
+			generateGhost(cell);
+		}
 		dynamic.SetActive (true);
 
+	}
+
+	private void generateGhost (MazeCell cell) {
+		GhostController ghost = Instantiate(ghostPrefab) as GhostController;
+		ghost.SetInitialCell (cell);
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
@@ -89,6 +101,7 @@ public class Maze : MonoBehaviour {
 		passage.Initialize(cell, otherCell, direction);
 		passage = Instantiate(passagePrefab) as MazePassage;
 		passage.Initialize(otherCell, cell, direction.GetOpposite());
+
 	}
 
 	private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
