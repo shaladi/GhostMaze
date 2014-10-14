@@ -30,7 +30,7 @@ public class Maze : MonoBehaviour {
 	public Vector3 RandomCoordinates3 {
 		get {
 			return new Vector3(Random.Range(-size.x/2 + 1, size.x/2 - 1)*cellSize, 
-			                   Random.Range(-size.y/2 + 1, size.y/2 - 1)*cellSize, 0); 
+			                   Random.Range(-size.y/2 + 1, size.y/2 - 1)*cellSize, 0.0f); 
 		}
 	}
 
@@ -54,7 +54,8 @@ public class Maze : MonoBehaviour {
 		}
 
 		for (int i = 0; i < numGhosts; i++) {
-			Instantiate(Ghosts, RandomCoordinates3, Quaternion.identity);
+			Vector3 pos = GetCell (RandomCoordinates).transform.position;
+			Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity);
 		}
 
 		dynamic.SetActive (true);
