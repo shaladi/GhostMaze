@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private float sanityCooldownTime = 5;
     private float sanityTime = 2;
     private float sanityEnd = 0;
+	private float sanityLoss = 20;
 
     // Beacon Utils
     public GameObject beacon;
@@ -100,7 +101,9 @@ public class PlayerController : MonoBehaviour {
                 Destroy (other.gameObject.transform.parent.gameObject);
                 current_beacon_count--;
             }
-        }
+        } else if (other.gameObject.tag == "Ghost") {
+			sanity -= sanityLoss;
+		}
     }
 
 }
