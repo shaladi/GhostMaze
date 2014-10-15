@@ -7,9 +7,12 @@ public class MainGUI : MonoBehaviour {
 	public PlayerController playerController;
 	// Use this for initialization
 	void Start() {
-
+//		GUI.BeginGroup (new Rect (0, 0, Screen.width, Screen.height));
+//		GUI.backgroundColor = Color.black;
+//				GUI.EndGroup ();
 	}
 	void OnGUI () {
+		//GUI.ModalWindow(0, new Rect(0,0,Screen.width, Screen.height), DoMyWindow, "My Window");		
 		GUI.BeginGroup (new Rect (pos.x, pos.y, size.x, size.y));
 		GUI.backgroundColor = playerController.sanityOff ? Color.green : Color.red;
 		GUI.Label (new Rect (0,0,200,30), "Sanity");
@@ -18,9 +21,16 @@ public class MainGUI : MonoBehaviour {
 		GUI.Label (new Rect (150, 20, 200, 30), (playerController.MAX_BEACON_COUNT - playerController.current_beacon_count).ToString ());
 		GUI.EndGroup();
 
-}
-
-// Update is called once per frame
+    }
+	void DoMyWindow(int windowID) {
+		GUI.backgroundColor = Color.black;
+		GUI.Box (new Rect (0, 0, Screen.width, Screen.height), new GUIContent ("Hello"));
+		if (GUI.Button(new Rect(10, 20, 100, 20), "Hello World"))
+			print("Got a click");
+		
+	}
+	
+	// Update is called once per frame
 void Update () {
 }
 }
