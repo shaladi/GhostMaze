@@ -12,8 +12,6 @@ public class Maze : MonoBehaviour {
 
 	public MazePassage passagePrefab;
 	public MazeWall wallPrefab;
-	public List<MazeWall> edgeWalls = new List<MazeWall>();	
-	public BoxCollider2D endWall;
 
 	public GameObject dynamic;
 	
@@ -54,42 +52,6 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-
-		/*
-		 * Remove a random wall from the scene
-		 **/
-		var randomEdgeWallIndex = Random.Range (0, edgeWalls.Count);
-		var thisWall = edgeWalls [randomEdgeWallIndex];
-		Destroy (thisWall.gameObject);
-
-		// Add the collider for completing the level
-
-		var x = thisWall.transform.position.x;
-		var y = thisWall.transform.position.y;
-
-		if (thisWall.direction == (MazeDirection)0) {
-			y += 2;
-			endWall.size = new Vector2(4f, 0.25f);
-		} else if (thisWall.direction == (MazeDirection)1) {
-			x += 2;
-			endWall.size = new Vector2(0.25f, 4f);
-		} else if (thisWall.direction == (MazeDirection)2) {
-			y -= 2;
-			endWall.size = new Vector2(4f, 0.25f);
-		} else if (thisWall.direction == (MazeDirection)3) {
-			x -= 2;
-			endWall.size = new Vector2(0.25f, 4f);
-		}
-
-		Instantiate (endWall, new Vector3 (x, y, 0), Quaternion.identity);
-
-		int numCells = size.x * size.y;
-		for (int i = 0; i < numGhosts; ++i) {
-			int idx = Random.Range (0, numCells);
-			MazeCell cell = cells[idx%size.x, (int)idx/size.x];
-			generateGhost(cell);
-		}
-		dynamic.SetActive (true);
 
 		for (int i = 0; i < numGhosts; i++) {
 			MazeCell cell = GetCell(RandomCoordinates);
@@ -153,8 +115,6 @@ public class Maze : MonoBehaviour {
 		if (otherCell != null) {
 			wall = Instantiate(wallPrefab) as MazeWall;
 			wall.Initialize(otherCell, cell, direction.GetOpposite());
-		} else {
-			edgeWalls.Add (wall);
 		}
 	}
 }
