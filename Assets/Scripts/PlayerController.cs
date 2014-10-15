@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     private uint current_beacon_count = 0;
     public float dropRate = 1f;
     private float nextDrop = 0f;
+	Animator anim;
 
 
     // Update is called once per frame
@@ -49,6 +50,19 @@ public class PlayerController : MonoBehaviour {
         } else {
             vertical = Vector2.up * 0f * Time.deltaTime;
         }
+
+		//Animator Controller
+		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D) ||
+						Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A) ||
+						Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W) || 
+						Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)
+		   ) {
+						anim = GetComponent<Animator> ();
+						anim.SetBool ("Walk", true);
+				} else {
+						anim = GetComponent<Animator> ();
+						anim.SetBool ("Walk", false);
+				}
 
         /* 
          * Sanity Logic 
