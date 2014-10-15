@@ -1822,7 +1822,7 @@ Camera:
     height: 4
   near clip plane: .300000012
   far clip plane: 10000
-  field of view: 25
+  field of view: 24
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2169,9 +2169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f64c3a30cd35345a9e95a7e90bee01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: 20, y: 40}
-  size: {x: 60, y: 20}
+  pos: {x: 10, y: 40}
+  size: {x: 300, y: 300}
   playerController: {fileID: 619960978}
+  gameHasStarted: 0
+  gameHasEnded: 0
 --- !u!4 &1519965386
 Transform:
   m_ObjectHideFlags: 0

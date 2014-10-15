@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour {
 	
 	/* Collisions */
 	void OnTriggerStay2D (Collider2D other) {
-		if (other.gameObject.tag == "BeaconLight") {
+		if (other.gameObject.tag == "Beacon-Light") {
 			isNearBeacon = true;	
 		}
 		if (other.gameObject.tag == "Beacon") {
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.gameObject.tag == "BeaconLight") {
+		if (other.gameObject.tag == "Beacon-Light") {
 			isNearBeacon = false;	
 		}
 	}
