@@ -14,6 +14,8 @@ public class GhostController : MonoBehaviour {
 	//    private float nextCommand = 0f;
 	public int currCellIndex;
 
+	private int resetCounter = 0;
+
 	private IntVector2[] translations;
 
 	// Update is called once per frame
@@ -25,13 +27,12 @@ public class GhostController : MonoBehaviour {
 //			currCellIndex = (currCellIndex + 1) % numCells;
 //		}
 		Vector3 sumVector = vel.normalized * speed * Time.deltaTime;
-		if (sumVector.x == 0 && sumVector.y == 0) {
-			currCellIndex = (currCellIndex + Random.Range(1,numCells)) % numCells;
-		}
+
 		rigidbody2D.velocity = sumVector;
-		if (sumVector.y != 0 || sumVector.x != 0) {
+		if ((sumVector.y != 0 || sumVector.x != 0 )&& resetCounter < 1) {
 			transform.rotation = Quaternion.AngleAxis (Mathf.Atan2 (sumVector.y, sumVector.x) * Mathf.Rad2Deg, Vector3.forward);
 		}
+		resetCounter++;
 		//
 		////        /* 
 		////         * Ghost movement Logic
@@ -46,10 +47,12 @@ public class GhostController : MonoBehaviour {
 	}
 	
 	/* Collisions */
-	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.tag == "Cell") {
-			//currCellIndex = (currCellIndex + 1) % numCells;
-			currCellIndex = (currCellIndex + Random.Range(1,numCells)) % numCells;
+	void OnTriggerStay2D (Collider2D other) {
+		if (other.gameObject.tag == "Cell" && resetCounter > 40) {
+			currCellIndex = (currCellIndex + 1) % numCells;
+			//currCellIndex =  Random.Range(1,numCells);
+
+			resetCounter = 0;
 		}
 	}
 
