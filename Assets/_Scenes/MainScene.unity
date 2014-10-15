@@ -2095,7 +2095,7 @@ GameObject:
   - 4: {fileID: 1519965386}
   - 114: {fileID: 1519965385}
   m_Layer: 0
-  m_Name: GUI
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
