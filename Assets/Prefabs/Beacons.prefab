@@ -12,7 +12,7 @@ GameObject:
   - 58: {fileID: 5800000}
   m_Layer: 0
   m_Name: beacon-light
-  m_TagString: Untagged
+  m_TagString: Beacon-Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400002}
   - 50: {fileID: 5000000}
-  - 61: {fileID: 6100000}
+  - 58: {fileID: 5800002}
   m_Layer: 0
   m_Name: beacon
   m_TagString: Beacon
@@ -140,11 +140,11 @@ CircleCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 3
   m_Center: {x: 0, y: 0}
---- !u!61 &6100000
-BoxCollider2D:
+--- !u!58 &5800002
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -152,8 +152,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1.00000012, y: 1}
-  m_Center: {x: 5.96046448e-08, y: 0}
+  m_Radius: .300000012
+  m_Center: {x: 0, y: 0}
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
