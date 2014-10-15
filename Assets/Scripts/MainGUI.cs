@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class MainGUI : MonoBehaviour {
-	public Vector2 pos = new Vector2(0,40);
-	public Vector2 size = new Vector2(60,20);
+	public Vector2 pos = new Vector2(10,40);
+	public Vector2 size = new Vector2(300,300);
 	public PlayerController playerController;
 	// Use this for initialization
 	void Start() {
