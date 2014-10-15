@@ -11,11 +11,12 @@ public class TorusController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (Input.GetKey (KeyCode.Z)) {
-			adjustedOffset = offset - (new Vector3(0,0,20));
-		} else {
-			adjustedOffset = offset;
-		}
+//		if (Input.GetKey (KeyCode.Z)) {
+//			adjustedOffset = offset - (new Vector3(0,0,20));
+//		} else {
+//			adjustedOffset = offset;
+//		}
+		adjustedOffset = offset;
         Vector3 curPosition = transform.position;
         Vector3 nextPosition = player.transform.position + adjustedOffset;
         transform.position = Vector3.SmoothDamp (curPosition, nextPosition, ref speed, dampTime);
