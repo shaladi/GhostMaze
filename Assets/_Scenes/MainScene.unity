@@ -643,7 +643,7 @@ MonoBehaviour:
   passagePrefab: {fileID: 11400000, guid: 4db582300649e4e399ee4a2665f9e8e6, type: 2}
   wallPrefab: {fileID: 11400000, guid: 2970089c471ef4c599835c1992954af5, type: 2}
   edgeWalls: []
-  endWall: {fileID: 0}
+  endWall: {fileID: 6100000, guid: 5d8dfc4aca59a2040b8dd3cec24b72ba, type: 2}
   dynamic: {fileID: 1992972729}
   numGhosts: 4
   Ghosts: {fileID: 11400000, guid: d8a4711b3e90d7f4dba24777b607a15d, type: 2}
@@ -959,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   sanity: 100
+  sanityOff: 0
   beacon: {fileID: 100004, guid: 7eac58226ed58da488faacc59b9ecdfe, type: 2}
   dropRate: 1
 --- !u!95 &619960979
@@ -1447,7 +1448,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: ca4b3e67244d24a8ba6b4fa3a7bd79f3, type: 2}
   m_PrefabInternal: {fileID: 257664520}
   m_GameObject: {fileID: 1245275363}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: .5, y: -6, z: -10}
   m_LocalScale: {x: 2.5, y: .00999999978, z: 2.5}
   m_Children: []
@@ -1812,6 +1813,10 @@ Prefab:
       propertyPath: dynamic
       value: 
       objectReference: {fileID: 1992972729}
+    - target: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
+      propertyPath: endWall
+      value: 
+      objectReference: {fileID: 6100000, guid: 5d8dfc4aca59a2040b8dd3cec24b72ba, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
   m_RootGameObject: {fileID: 363744297}
