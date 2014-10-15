@@ -15,6 +15,7 @@ public class Maze : MonoBehaviour {
 	public List<MazeWall> edgeWalls = new List<MazeWall>();	
 	public BoxCollider2D endWall;
 
+
 	public GameObject dynamic;
 	public MainGUI gui;
 

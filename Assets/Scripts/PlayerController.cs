@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 			sanityOff = false;
 			sanityEnd = sanityTime + Time.time;
 			rigidbody2D.velocity = Random.insideUnitCircle * speed * Time.deltaTime;
+			setLights(Color.red);
 		} else if (sanityOff) {
 			Vector2 sumVector = horizontal + vertical;
 			rigidbody2D.velocity = sumVector;
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour {
 			sanityEnd = 0;
 			sanityOff = true;
 			sanityCheck = false;
+			setLights(Color.yellow);
 		}
 		
 		/*
@@ -161,6 +163,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (other.gameObject.tag == "Ghost") {
 			sanityDecreaseRate = 0.03f;
+			setLights(Color.blue);
 		}
 	}
 
@@ -190,9 +193,11 @@ public class PlayerController : MonoBehaviour {
 						} else if (thisWall.direction == (MazeDirection)2) {
 							y -= 2;
 							maze.endWall.size = new Vector2(4f, 0.25f);
+
 						} else if (thisWall.direction == (MazeDirection)3) {
 							x -= 2;
 							maze.endWall.size = new Vector2(0.25f, 4f);
+
 						}
 						
 						Instantiate (maze.endWall, new Vector3 (x, y, 0), Quaternion.identity);
@@ -213,7 +218,13 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (other.gameObject.tag == "Ghost") {
 			sanityDecreaseRate = 0.01f;
+			setLights(Color.yellow);
 		}
 	}
-	
+
+	void setLights(Color color){
+		GameObject.FindGameObjectWithTag ("directionalLight").GetComponent<Light> ().color = color;
+		GameObject.FindGameObjectWithTag ("pointLight").GetComponent<Light> ().color = color;
+		GameObject.FindGameObjectWithTag ("pointLight2").GetComponent<Light> ().color = color;
+		}
 }
