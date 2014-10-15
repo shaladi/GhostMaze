@@ -86,8 +86,8 @@ public class Maze : MonoBehaviour {
 		for (int i = 0; i < numGhosts; i++) {
 			MazeCell cell = GetCell(RandomCoordinates);
 			Vector3 pos = cell.transform.position;
-			GhostController gh = Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
-			gh.SetInitialCell(cell);
+			// GhostController gh = Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
+			// gh.SetInitialCell(cell);
 		}
 
 		dynamic.SetActive (true);
