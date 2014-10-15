@@ -2,27 +2,25 @@
 using System.Collections;
 
 public class MainGUI : MonoBehaviour {
-	public Vector2 pos = new Vector2(20,40);
-	public Vector2 size = new Vector2(60,20);
-	public Texture2D emptyTex;
-	public Texture2D fullTex;
-	public float barDisplay = 100;
+	public Vector2 pos = new Vector2(10,40);
+	public Vector2 size = new Vector2(300,300);
+	public PlayerController playerController;
 	// Use this for initialization
+	void Start() {
+
+	}
 	void OnGUI () {
-		Color[] red = new Color[1];
-		red[0] = Color.red;
-		Color[] green = new Color[1];
-		green[0] = Color.green;
-		emptyTex.SetPixels (red);
-		fullTex.SetPixels (green);
 		GUI.BeginGroup (new Rect (pos.x, pos.y, size.x, size.y));
-			GUI.Box (new Rect (0, 0, size.x, size.y), emptyTex);
-			GUI.BeginGroup(new Rect(0,0, size.x * barDisplay, size.y));
-				GUI.Box(new Rect(0,0, size.x, size.y), fullTex);
-			GUI.EndGroup();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+		GUI.backgroundColor = playerController.sanityOff ? Color.green : Color.red;
+		GUI.Label (new Rect (0,0,200,30), "Sanity");
+		GUI.HorizontalScrollbar(new Rect (50,3,200,20), 0, playerController.sanity,0, 100);
+		GUI.Label (new Rect (0,20,200,30), "Remaining Beacons:");
+		GUI.Label (new Rect (150, 20, 200, 30), (playerController.MAX_BEACON_COUNT - playerController.current_beacon_count).ToString ());
+		GUI.EndGroup();
+
+}
+
+// Update is called once per frame
+void Update () {
+}
 }
