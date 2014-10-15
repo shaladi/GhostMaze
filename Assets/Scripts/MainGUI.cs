@@ -6,9 +6,11 @@ public class MainGUI : MonoBehaviour
 		public Vector2 pos = new Vector2 (10, 40);
 		public Vector2 size = new Vector2 (300, 300);
 		public PlayerController playerController;
+		public GameObject dynamic;
 		public bool gameHasStarted = false;
-	
 		public bool gameHasEnded = false;
+
+		private bool button;
 		// Use this for initialization
 		void Start ()
 		{
@@ -69,16 +71,13 @@ public class MainGUI : MonoBehaviour
 			       "Arrow Keys/WASD : Move\n" +
 						"              Spacebar : Place a beacon\n" +
 						"                          P : Pick up a beacon\n" +
-						"                          Z : Zoom camera out\n"
+						"                          Z : Zoom camera out\n" +
+		           		"              Return: Start!"
 				);
 
 				GUI.skin.button.fontSize = 20;
-				if (GUI.Button (new Rect (Screen.width / 2 - 100, 600, 200, 30), "Can you escape?")) {
-						Time.timeScale = 1; // starts game
-						gameHasStarted = true;
-				}  
-		
 		}
+
 
 		void SpawnEndGameWindow (int windowID)
 		{
@@ -117,6 +116,11 @@ public class MainGUI : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+			if (Input.GetKeyDown(KeyCode.Return)) {
+				Time.timeScale = 1; // starts game
+				gameHasStarted = true;
+			}
+
 		}
 
 }
