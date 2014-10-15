@@ -10,18 +10,17 @@ public class PlayerController : MonoBehaviour {
 
     // Sanity Utils
     public float sanity = 100;
-    public bool sanityOff = false;
+    private bool sanityOff = false;
     private bool sanityCheck = false;
     private float nextCheckTime = 0;
     private float sanityCooldownTime = 5;
     private float sanityTime = 2;
     private float sanityEnd = 0;
-	private float sanityDecreaseRate = 0.01f;
 
     // Beacon Utils
     public GameObject beacon;
     public uint MAX_BEACON_COUNT = 10;
-    public uint current_beacon_count = 0;
+    private uint current_beacon_count = 0;
     public float dropRate = 1f;
     private float nextDrop = 0f;
 	Animator anim;
@@ -101,12 +100,10 @@ public class PlayerController : MonoBehaviour {
                 nextDrop = Time.time + dropRate;
                 current_beacon_count++;
                 Instantiate (beacon, transform.position, Quaternion.identity);
-            } 
+            } else {
+                // TODO(anyone! Please display a text or play a sound to indicate the player is out of beacons.")
+            }
         }
-        
-		if (sanityOff) {
-			sanity -= sanityDecreaseRate;
-		}
 
     }
 
