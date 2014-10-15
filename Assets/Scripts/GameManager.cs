@@ -3,7 +3,9 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	public Maze mazeInstance;
+	public Maze mazeObject;
+
+	private Maze mazeInstance;
 
 	private void Start () {
 		BeginGame();
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void BeginGame () {
+		mazeInstance = Instantiate(mazeObject) as Maze;
 		StartCoroutine(mazeInstance.Generate());
 
 	}

@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class Maze : MonoBehaviour {
 
 	public IntVector2 size;
-	public int numGhosts;
-	public GhostController ghostPrefab;
 
 	public MazeCell cellPrefab;
 
@@ -18,9 +16,21 @@ public class Maze : MonoBehaviour {
 	public GameObject dynamic;
 	
 	private MazeCell[,] cells;
+	private int cellSize = 4;
+
+	public int numGhosts;
+	public GhostController Ghosts;
+
 	public IntVector2 RandomCoordinates {
 		get {
 			return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.y));
+		}
+	}
+
+	public Vector3 RandomCoordinates3 {
+		get {
+			return new Vector3(Random.Range(-size.x/2 + 1, size.x/2 - 1)*cellSize, 
+			                   Random.Range(-size.y/2 + 1, size.y/2 - 1)*cellSize, 0.0f); 
 		}
 	}
 
@@ -42,19 +52,15 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-		int numCells = size.x * size.y;
-		for (int i = 0; i < numGhosts; ++i) {
-			int idx = Random.Range (0, numCells);
-			MazeCell cell = cells[idx%size.x, (int)idx/size.x];
-			generateGhost(cell);
+
+		for (int i = 0; i < numGhosts; i++) {
+			MazeCell cell = GetCell(RandomCoordinates);
+			Vector3 pos = cell.transform.position;
+			GhostController gh = Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
+			gh.SetInitialCell(cell);
 		}
+
 		dynamic.SetActive (true);
-
-	}
-
-	private void generateGhost (MazeCell cell) {
-		GhostController ghost = Instantiate(ghostPrefab) as GhostController;
-		ghost.SetInitialCell (cell);
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
@@ -101,7 +107,6 @@ public class Maze : MonoBehaviour {
 		passage.Initialize(cell, otherCell, direction);
 		passage = Instantiate(passagePrefab) as MazePassage;
 		passage.Initialize(otherCell, cell, direction.GetOpposite());
-
 	}
 
 	private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
