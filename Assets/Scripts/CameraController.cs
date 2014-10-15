@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Z)) {
-			camera.fieldOfView += (70f - camera.fieldOfView)/20f;
+			camera.fieldOfView += (100f - camera.fieldOfView)/20f;
 		} else {
 			camera.fieldOfView += (45f - camera.fieldOfView)/20f;
 		}

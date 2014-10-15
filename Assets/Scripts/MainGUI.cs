@@ -21,7 +21,7 @@ public class MainGUI : MonoBehaviour
 
 		void OnGUI ()
 		{
-				if (GameObject.FindWithTag ("EndWall") != null) {
+				if (GameObject.FindWithTag ("endWall") != null) {
 						if (playerController.sanity <= 0 || playerController.gameHasEnded) {//|| endController.gameHasEnded) {
 								gameEnded = true;
 						}
@@ -61,29 +61,31 @@ public class MainGUI : MonoBehaviour
 				GUI.Box (new Rect (0, 0, Screen.width, Screen.height), new GUIContent ());
 
 				GUI.skin.label.fontSize = 40;
-				GUI.Label (new Rect (0, 100, Screen.width, Screen.height), "GHOST MAZE");
+				GUI.Label (new Rect (0, 50, Screen.width, Screen.height), "GHOST MAZE");
 
 				GUI.skin.label.fontSize = 20;
-				GUI.Label (new Rect (0, 200, Screen.width, Screen.height), 
+				GUI.Label (new Rect (0, 100, Screen.width, Screen.height), 
 		           "You've awoken in the middle of a dark maze with nothing but a lantern.\n" +
 						"As you explore the maze, you realize you are slowly losing your <color=red><b>Sanity</b></color>!\n" + 
 						"You sometimes get so scared that you <color=yellow><b>lose control of where you're walking</b></color>!\n" +
 						"You need to escape the maze quickly before you go completely insane!\n\n" +
 						"Luckily, you find 10 <color=cyan><b>Beacons</b></color> in your pocket which you can place down\n " +
-						"to help you remain sane and give you vision of the maze.\n\n" +
+		           "to help you remain <color=red><b>Sanity</b></color> and give you vision of the maze.\n\n" +
+		                "You must first find the <color=orange><b>Brown Key</b></color> to unlock the exit passage.\n"+
+		           "Watch out for <color=magenta><b><i>Ghosts</i></b></color>! They will quickly drain your <color=red><b>Sanity</b></color> away if you get too close.\n\n"+ 
 						"Controls: \n");
 
 				centeredStyle.alignment = TextAnchor.UpperLeft;
-				GUI.Label (new Rect (290, 410, Screen.width, Screen.height),
+				GUI.Label (new Rect (290, 380, Screen.width, Screen.height),
 			       "Arrow Keys/WASD : Move\n" +
 						"              Spacebar : Place a beacon\n" +
 						"                          P : Pick up a beacon\n" +
 						"                          Z : Zoom camera out\n" +
-		           		"              Return: Start!"
+		           		"                  Return : Start!"
 				);
 
 				GUI.skin.button.fontSize = 20;
-				if (GUI.Button (new Rect (Screen.width / 2 - 100, 510, 200, 30), "Can you escape?")) {
+				if (GUI.Button (new Rect (Screen.width / 2 - 100, 560, 200, 30), "Can you escape?")) {
 						Time.timeScale = 1; // starts game
 						gameHasStarted = true;
 				}  

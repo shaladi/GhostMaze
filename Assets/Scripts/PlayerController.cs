@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private float sanityCooldownTime = 5;
 	private float sanityTime = 2;
 	private float sanityEnd = 0;
-	private float sanityDecreaseRate = 0.025f;
+	private float sanityDecreaseRate = 0.01f;
 	
 	// Beacon Utils
 	public GameObject beacon;
@@ -61,37 +61,42 @@ public class PlayerController : MonoBehaviour {
 		/* 
          * Player movement Logic
          */
-		
-		//Horizontal Movement Vector
-		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) {
-			horizontal = Vector2.right * speed * Time.deltaTime;
-		} else if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) {
-			horizontal = -Vector2.right * speed * Time.deltaTime;
+		if (!Input.GetKey (KeyCode.Z)) {
+						//Horizontal Movement Vector
+						if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) {
+								horizontal = Vector2.right * speed * Time.deltaTime;
+						} else if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) {
+								horizontal = -Vector2.right * speed * Time.deltaTime;
+						} else {
+								horizontal = Vector2.right * 0f * Time.deltaTime;
+						}
+			
+						//Vertical Movement Vector
+						if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) {
+								vertical = Vector2.up * speed * Time.deltaTime;
+						} else if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+								vertical = -Vector2.up * speed * Time.deltaTime;
+						} else {
+								vertical = Vector2.up * 0f * Time.deltaTime;
+						}
+						//Animator Controller
+						if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D) ||
+								Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A) ||
+								Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W) || 
+								Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)
+			    ) {
+								anim = GetComponent<Animator> ();
+								anim.SetBool ("Walk", true);
+						} else {
+								anim = GetComponent<Animator> ();
+								anim.SetBool ("Walk", false);
+						}
 		} else {
 			horizontal = Vector2.right * 0f * Time.deltaTime;
-		}
-		
-		//Vertical Movement Vector
-		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) {
-			vertical = Vector2.up * speed * Time.deltaTime;
-		} else if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
-			vertical = -Vector2.up * speed * Time.deltaTime;
-		} else {
 			vertical = Vector2.up * 0f * Time.deltaTime;
-		}
-		//Animator Controller
-		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D) ||
-		    Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A) ||
-		    Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W) || 
-		    Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)
-		    ) {
-			anim = GetComponent<Animator> ();
-			anim.SetBool ("Walk", true);
-		} else {
 			anim = GetComponent<Animator> ();
 			anim.SetBool ("Walk", false);
 		}
-		
 		/* 
          * Sanity Logic 
          */
@@ -137,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		if (sanityOff && !isNearBeacon) {
-			sanity -= sanityDecreaseRate;
+			sanity -= sanityDecreaseRate * Time.timeScale;
 		}
 		
 	}
@@ -153,6 +158,9 @@ public class PlayerController : MonoBehaviour {
 				current_beacon_count--;
 				beaconDestroyed = true;
 			}
+		}
+		if (other.gameObject.tag == "Ghost") {
+			sanityDecreaseRate = 0.03f;
 		}
 	}
 
@@ -202,6 +210,9 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.gameObject.tag == "Beacon-Light") {
 			isNearBeacon = false;	
+		}
+		if (other.gameObject.tag == "Ghost") {
+			sanityDecreaseRate = 0.01f;
 		}
 	}
 	

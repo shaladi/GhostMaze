@@ -24,7 +24,14 @@ public class GhostController : MonoBehaviour {
 //		if (mag <= 0.1) {
 //			currCellIndex = (currCellIndex + 1) % numCells;
 //		}
-		rigidbody2D.velocity = vel.normalized * speed * Time.deltaTime;
+		Vector3 sumVector = vel.normalized * speed * Time.deltaTime;
+		if (sumVector.x == 0 && sumVector.y == 0) {
+			currCellIndex = (currCellIndex + Random.Range(1,numCells)) % numCells;
+		}
+		rigidbody2D.velocity = sumVector;
+		if (sumVector.y != 0 || sumVector.x != 0) {
+			transform.rotation = Quaternion.AngleAxis (Mathf.Atan2 (sumVector.y, sumVector.x) * Mathf.Rad2Deg, Vector3.forward);
+		}
 		//
 		////        /* 
 		////         * Ghost movement Logic
@@ -41,7 +48,8 @@ public class GhostController : MonoBehaviour {
 	/* Collisions */
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject.tag == "Cell") {
-			currCellIndex = (currCellIndex + 1) % numCells;
+			//currCellIndex = (currCellIndex + 1) % numCells;
+			currCellIndex = (currCellIndex + Random.Range(1,numCells)) % numCells;
 		}
 	}
 
