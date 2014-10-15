@@ -1047,6 +1047,7 @@ MonoBehaviour:
   key: {fileID: 100000, guid: 429dee276b540da449053552e76e1427, type: 2}
   hasKey: 0
   gameHasEnded: 0
+  cc: {fileID: 0}
 --- !u!95 &619960979
 Animator:
   serializedVersion: 3
