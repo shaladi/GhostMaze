@@ -40,38 +40,39 @@ public class GhostController : MonoBehaviour {
 	}
 	
 	public void SetInitialCell (MazeCell cell) {
-		transform.position = cell.transform.position;
-		for (int i = 0; i < numCells; ++i) {
-			hauntedCells.Add (cell);
-			MazeCellEdge edge = null;
-			int dir = Random.Range(0, 3);
-			bool valid_dir = false;
-			int retries = 4;
-			while(!valid_dir && (retries > 0)) {
-				try {
-					edge = cell.GetEdge((MazeDirection)dir);
-					if (edge.otherCell != null)
-						valid_dir = true;
-					else {
-						dir = (dir + 1) % 4;
-						--retries;
-					}
-				} catch (System.Exception) {
-					--retries;
-				}
-			}
-			if (hauntedCells.IndexOf(edge.otherCell) == -1) {
-				cell = edge.otherCell;
-			} else {
-				--i;
-			}
-		}
-		for (int i = 1; i < hauntedCells.Count; ++i) {
-			if (hauntedCells[i] == hauntedCells[i-1]) {
-				hauntedCells.RemoveAt(i);
-				--i;
-			}
-		}
+//		transform.position = cell.transform.position;
+//		IntVector2 coordinates = cell.coordinates;
+//		for (int i = 0; i < numCells; ++i) {
+//			hauntedCells.Add (cell);
+//			MazeCellEdge edge = null;
+//			int dir = Random.Range(0, 3);
+//			bool valid_dir = false;
+//			int retries = 4;
+//			while(!valid_dir && (retries > 0)) {
+//				try {
+//					edge = cell.GetEdge((MazeDirection)dir);
+//					if (edge.otherCell != null)
+//						valid_dir = true;
+//					else {
+//						dir = (dir + 1) % 4;
+//						--retries;
+//					}
+//				} catch (System.Exception) {
+//					--retries;
+//				}
+//			}
+//			if (hauntedCells.IndexOf(edge.otherCell) == -1) {
+//				cell = edge.otherCell;
+//			} else {
+//				--i;
+//			}
+//		}
+//		for (int i = 1; i < hauntedCells.Count; ++i) {
+//			if (hauntedCells[i] == hauntedCells[i-1]) {
+//				hauntedCells.RemoveAt(i);
+//				--i;
+//			}
+//		}
 	}
 	
 }

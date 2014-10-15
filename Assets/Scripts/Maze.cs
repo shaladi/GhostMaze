@@ -21,7 +21,7 @@ public class Maze : MonoBehaviour {
 	private int cellSize = 4;
 
 	public int numGhosts;
-	public GhostController Ghosts;
+	public GhostController ghost;
 
 	public IntVector2 RandomCoordinates {
 		get {
@@ -94,7 +94,7 @@ public class Maze : MonoBehaviour {
 		for (int i = 0; i < numGhosts; i++) {
 			MazeCell cell = GetCell(RandomCoordinates);
 			Vector3 pos = cell.transform.position;
-			GhostController gh = Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
+			GhostController gh = Instantiate(ghost, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
 			gh.SetInitialCell(cell);
 		}
 
