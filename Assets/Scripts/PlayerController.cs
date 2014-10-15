@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour {
 
 	public Vector3 RandomCoordinates3 {
 		get {
-			return new Vector3(Random.Range(1,2), 
-			                   Random.Range(1,2), transform.position.z); 
+			return new Vector3(Random.Range(5,7), 
+			                   Random.Range(5,7), transform.position.z); 
 		}
 	}
 
