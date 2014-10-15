@@ -14,6 +14,7 @@ public class Maze : MonoBehaviour {
 
 	public MazePassage passagePrefab;
 	public MazeWall wallPrefab;
+	public List<MazeWall> edgeWalls = new List<MazeWall>();	
 
 	public GameObject dynamic;
 	
@@ -42,6 +43,7 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
+		print ("edgeWalls: " + edgeWalls.ToString());
 		int numCells = size.x * size.y;
 		for (int i = 0; i < numGhosts; ++i) {
 			int idx = Random.Range (0, numCells);
@@ -110,6 +112,8 @@ public class Maze : MonoBehaviour {
 		if (otherCell != null) {
 			wall = Instantiate(wallPrefab) as MazeWall;
 			wall.Initialize(otherCell, cell, direction.GetOpposite());
+		} else {
+			edgeWalls.Add (wall);
 		}
 	}
 }
