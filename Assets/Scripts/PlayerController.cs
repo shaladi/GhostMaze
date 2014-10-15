@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void setLights(Color color){
-		GameObject.FindGameObjectWithTag ("directionalLight").GetComponent<Light> ().color = color;
+		//GameObject.FindGameObjectWithTag ("directionalLight").GetComponent<Light> ().color = color;
 		GameObject.FindGameObjectWithTag ("pointLight").GetComponent<Light> ().color = color;
 		GameObject.FindGameObjectWithTag ("pointLight2").GetComponent<Light> ().color = color;
 		}
