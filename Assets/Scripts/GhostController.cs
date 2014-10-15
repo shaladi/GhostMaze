@@ -17,8 +17,8 @@ public class GhostController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		
-		Vector3 vel = hauntedCells[currCellIndex].transform.position - transform.position + new Vector3 (0.0f, 0.0f, 0.5f);
-		rigidbody2D.velocity = vel.normalized * speed * Time.deltaTime;
+//		Vector3 vel = hauntedCells[currCellIndex].transform.position - transform.position + new Vector3 (0.0f, 0.0f, 0.5f);
+//		rigidbody2D.velocity = vel.normalized * speed * Time.deltaTime;
 		//
 		////        /* 
 		////         * Ghost movement Logic
