@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     public float dropRate = 1f;
     private float nextDrop = 0f;
 	private bool isNearBeacon = false;
+	private bool beaconDestroyed = false;
 	Animator anim;
 
 
@@ -104,6 +105,11 @@ public class PlayerController : MonoBehaviour {
                 Instantiate (beacon, transform.position, Quaternion.identity);
             } 
         }
+
+		if (beaconDestroyed) {
+			beaconDestroyed = false;
+			isNearBeacon = false;
+		}
         
 		if (sanityOff && !isNearBeacon) {
 			sanity -= sanityDecreaseRate;
@@ -120,7 +126,7 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey (KeyCode.P)) {
                 Destroy (other.gameObject.transform.parent.gameObject);
                 current_beacon_count--;
-				isNearBeacon = false;
+				beaconDestroyed = true;
             }
         }
     }
