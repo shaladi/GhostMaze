@@ -2,16 +2,14 @@
 using System.Collections;
 
 public class MainGUI : MonoBehaviour {
-	public Vector2 pos = new Vector2(20,40);
-	public Vector2 size = new Vector2(60,20);
-	public Texture2D emptyTex;
-	public Texture2D fullTex;
-	public float barDisplay = 100;
+	public Vector2 pos = new Vector2(10,40);
+	public Vector2 size = new Vector2(300,300);
+	public PlayerController playerController;
 	// Use this for initialization
 	void Start() {
-//		GUI.BeginGroup (new Rect (0, 0, Screen.width, Screen.height));
-//		GUI.backgroundColor = Color.black;
-//				GUI.EndGroup ();
+		//		GUI.BeginGroup (new Rect (0, 0, Screen.width, Screen.height));
+		//		GUI.backgroundColor = Color.black;
+		//				GUI.EndGroup ();
 	}
 	void OnGUI () {
 		//GUI.ModalWindow(0, new Rect(0,0,Screen.width, Screen.height), DoMyWindow, "My Window");		
@@ -22,8 +20,8 @@ public class MainGUI : MonoBehaviour {
 		GUI.Label (new Rect (0,20,200,30), "Remaining Beacons:");
 		GUI.Label (new Rect (150, 20, 200, 30), (playerController.MAX_BEACON_COUNT - playerController.current_beacon_count).ToString ());
 		GUI.EndGroup();
-
-    }
+		
+	}
 	void DoMyWindow(int windowID) {
 		GUI.backgroundColor = Color.black;
 		GUI.Box (new Rect (0, 0, Screen.width, Screen.height), new GUIContent ("Hello"));
@@ -33,6 +31,6 @@ public class MainGUI : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-void Update () {
-}
+	void Update () {
+	}
 }
