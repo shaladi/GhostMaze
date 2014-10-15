@@ -6,6 +6,7 @@ TagManager:
   - Beacon
   - Cell
   - Beacon-Light
+  - Ghost
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
