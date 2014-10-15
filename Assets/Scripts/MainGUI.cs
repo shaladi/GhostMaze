@@ -21,11 +21,9 @@ public class MainGUI : MonoBehaviour
 
 		void OnGUI ()
 		{
-				if (GameObject.FindWithTag ("endWall") != null) {
 						if (playerController.sanity <= 0 || playerController.gameHasEnded) {//|| endController.gameHasEnded) {
 								gameEnded = true;
 						}
-				}
 				if (!gameHasStarted) {
 						GUI.ModalWindow (0, new Rect (0, 0, Screen.width, Screen.height), SpawnInstructionsWindow, "");
 				} else if (gameEnded) {
