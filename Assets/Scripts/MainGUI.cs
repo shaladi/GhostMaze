@@ -7,7 +7,8 @@ public class MainGUI : MonoBehaviour
 		public Vector2 size = new Vector2 (300, 300);
 		public PlayerController playerController;
 		public bool gameHasStarted = false;
-		public bool gameHasEnded = true;
+	
+		public bool gameHasEnded = false;
 		// Use this for initialization
 		void Start ()
 		{
@@ -18,6 +19,11 @@ public class MainGUI : MonoBehaviour
 
 		void OnGUI ()
 		{
+				if (GameObject.FindWithTag ("endWall") != null) {
+						if (playerController.sanity <= 0 || GameObject.FindWithTag ("endWall").GetComponent<endWallController> ().gameHasEnded) {//|| endController.gameHasEnded) {
+								gameHasEnded = true;
+						}
+				}
 				if (!gameHasStarted) {
 						GUI.ModalWindow (0, new Rect (0, 0, Screen.width, Screen.height), SpawnInstructionsWindow, "");
 				} else if (gameHasEnded) {
@@ -78,9 +84,7 @@ public class MainGUI : MonoBehaviour
 		{
 				Time.timeScale = 0; //pauses the game
 
-				bool win = false;
-
-				if (win) { 
+				if (playerController.sanity>0) { 
 		
 						var centeredStyle = GUI.skin.GetStyle ("Label");
 						centeredStyle.alignment = TextAnchor.UpperCenter;
@@ -88,6 +92,7 @@ public class MainGUI : MonoBehaviour
 		
 						GUI.skin.label.fontSize = 40;
 						GUI.Label (new Rect (0, 100, Screen.width, Screen.height), "You've Escaped!");
+
 		
 						GUI.skin.label.fontSize = 20;
 						GUI.Label (new Rect (0, 200, Screen.width, Screen.height), 
@@ -113,4 +118,5 @@ public class MainGUI : MonoBehaviour
 		void Update ()
 		{
 		}
+
 }

@@ -13,4 +13,8 @@ public struct IntVector2 {
 		a.y += b.y;
 		return a;
 	}
+
+	public bool Equals(IntVector2 other) {
+		return (this.x == other.x) && (this.y == other.y);
+	}
 }
