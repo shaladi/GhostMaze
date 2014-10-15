@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     public uint current_beacon_count = 0;
     public float dropRate = 1f;
     private float nextDrop = 0f;
+	private bool isNearBeacon = false;
 	Animator anim;
 
 
@@ -75,11 +76,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Sanity Random Movement Vector
-        if (sanityCheck && sanityOff) {
-            sanityOff = false;
+		if (sanityCheck && sanityOff && !isNearBeacon) {
+			sanityOff = false;
             sanityEnd = sanityTime + Time.time;
             rigidbody2D.velocity = Random.insideUnitCircle * speed * Time.deltaTime;
-        } else if (sanityOff) {
+		} else if (sanityOff) {
             Vector2 sumVector = horizontal + vertical;
             rigidbody2D.velocity = sumVector;
             if (sumVector.y != 0 || sumVector.x != 0) {
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour {
             } 
         }
         
-		if (sanityOff) {
+		if (sanityOff && !isNearBeacon) {
 			sanity -= sanityDecreaseRate;
 		}
 
@@ -112,12 +113,22 @@ public class PlayerController : MonoBehaviour {
 
     /* Collisions */
     void OnTriggerStay2D (Collider2D other) {
+		if (other.gameObject.tag == "BeaconLight") {
+			isNearBeacon = true;	
+		}
         if (other.gameObject.tag == "Beacon") {
             if (Input.GetKey (KeyCode.P)) {
                 Destroy (other.gameObject.transform.parent.gameObject);
                 current_beacon_count--;
+				isNearBeacon = false;
             }
         }
     }
 
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.gameObject.tag == "BeaconLight") {
+			isNearBeacon = false;	
+		}
+	}
+	
 }
