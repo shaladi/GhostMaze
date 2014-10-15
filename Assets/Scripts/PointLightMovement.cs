@@ -4,6 +4,8 @@ using System.Collections;
 public class PointLightMovement : MonoBehaviour {
 
 	public GameObject player;
+	public GameObject pointLight;
+	public PlayerController playerController;
 	public Vector3 offset = new Vector3(0,0,-2);
 	public float dampTime = 0.1f;
 	private Vector3 velocity = Vector3.zero;
@@ -18,5 +20,6 @@ public class PointLightMovement : MonoBehaviour {
 		Vector3 curPosition = transform.position;
 		Vector3 nextPosition = player.transform.position + offset;
 		transform.position = Vector3.SmoothDamp (curPosition, nextPosition, ref velocity, dampTime);
+		pointLight.GetComponent<Light> ().color = playerController.sanityOff ?  Color.yellow : Color.red;
 	}
 }
