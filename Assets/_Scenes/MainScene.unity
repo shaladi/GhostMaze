@@ -2082,7 +2082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1519965385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2096,7 +2096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 20, y: 40}
   size: {x: 60, y: 20}
-  playerController: {fileID: 0}
+  playerController: {fileID: 619960978}
 --- !u!4 &1519965386
 Transform:
   m_ObjectHideFlags: 0
@@ -2345,7 +2345,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1720589655
 GameObject:
   m_ObjectHideFlags: 0
