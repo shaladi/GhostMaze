@@ -16,6 +16,7 @@ public class Maze : MonoBehaviour {
 	public BoxCollider2D endWall;
 
 	public GameObject dynamic;
+	public GameObject camera;
 	
 	private MazeCell[,] cells;
 	private int cellSize = 4;
@@ -46,6 +47,8 @@ public class Maze : MonoBehaviour {
 
 	public IEnumerator Generate () {
 		dynamic.SetActive (false);
+		camera.SetActive(true);
+		camera.camera.nearClipPlane = 10000f;
 		WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 		cells = new MazeCell[size.x, size.y];
 		List<MazeCell> activeCells = new List<MazeCell>();
@@ -54,7 +57,8 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-
+		camera.camera.nearClipPlane = 0.3f;
+		dynamic.SetActive (true);
 		/*
 		 * Remove a random wall from the scene
 		 **/
@@ -86,8 +90,8 @@ public class Maze : MonoBehaviour {
 		for (int i = 0; i < numGhosts; i++) {
 			MazeCell cell = GetCell(RandomCoordinates);
 			Vector3 pos = cell.transform.position;
-			// GhostController gh = Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
-			// gh.SetInitialCell(cell);
+			GhostController gh = Instantiate(Ghosts, pos - new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
+			gh.SetInitialCell(cell);
 		}
 
 		dynamic.SetActive (true);
