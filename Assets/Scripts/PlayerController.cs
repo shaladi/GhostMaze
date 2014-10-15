@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	private float sanityCooldownTime = 5;
 	private float sanityTime = 2;
 	private float sanityEnd = 0;
-	private float sanityDecreaseRate = 0.01f;
+	private float sanityDecreaseRate = 0.025f;
 	
 	// Beacon Utils
 	public GameObject beacon;
@@ -32,11 +32,18 @@ public class PlayerController : MonoBehaviour {
 	public GameObject key;
 	public bool hasKey = false;
 	private bool keyInit = false;
+	public bool gameHasEnded = false;
+	public CameraController cc;
 
 	public Vector3 RandomCoordinates3 {
 		get {
-			return new Vector3(Random.Range(5,7), 
-			                   Random.Range(5,7), transform.position.z); 
+			int x,y;
+			do{
+			x = Random.Range(-20,20);
+			y = Random.Range(-20,20);
+			}while( x*x + y*y < 100);
+			return new Vector3(x, 
+			                   y, transform.position.z); 
 		}
 	}
 
@@ -70,7 +77,6 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			vertical = Vector2.up * 0f * Time.deltaTime;
 		}
-		
 		//Animator Controller
 		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D) ||
 		    Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A) ||
@@ -154,8 +160,15 @@ public class PlayerController : MonoBehaviour {
 						Debug.Log ("hello");
 						Destroy (other.gameObject);
 				}
+				if (other.gameObject.tag == "endWall") {
+						if (hasKey){
+							gameHasEnded = true;
+							}
+						else{
+							
+						}
+				}
 		}
-	
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.gameObject.tag == "Beacon-Light") {
 			isNearBeacon = false;	

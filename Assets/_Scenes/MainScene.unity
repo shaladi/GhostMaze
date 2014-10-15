@@ -1046,6 +1046,7 @@ MonoBehaviour:
   dropRate: 1
   key: {fileID: 100000, guid: 429dee276b540da449053552e76e1427, type: 2}
   hasKey: 0
+  gameHasEnded: 0
 --- !u!95 &619960979
 Animator:
   serializedVersion: 3
@@ -1824,7 +1825,7 @@ Camera:
     height: 4
   near clip plane: .300000012
   far clip plane: 10000
-  field of view: 24
+  field of view: 89
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2178,9 +2179,9 @@ MonoBehaviour:
   pos: {x: 10, y: 40}
   size: {x: 300, y: 300}
   playerController: {fileID: 619960978}
-  dynamic: {fileID: 1992972729}
+  dynamic: {fileID: 0}
   gameHasStarted: 0
-  gameHasEnded: 0
+  gameEnded: 0
 --- !u!4 &1519965386
 Transform:
   m_ObjectHideFlags: 0

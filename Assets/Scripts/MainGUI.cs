@@ -8,7 +8,7 @@ public class MainGUI : MonoBehaviour
 		public PlayerController playerController;
 		public GameObject dynamic;
 		public bool gameHasStarted = false;
-		public bool gameHasEnded = false;
+		public bool gameEnded = false;
 
 		private bool button;
 		// Use this for initialization
@@ -22,13 +22,13 @@ public class MainGUI : MonoBehaviour
 		void OnGUI ()
 		{
 				if (GameObject.FindWithTag ("endWall") != null) {
-						if (playerController.sanity <= 0 || GameObject.FindWithTag ("endWall").GetComponent<endWallController> ().gameHasEnded) {//|| endController.gameHasEnded) {
-								gameHasEnded = true;
+						if (playerController.sanity <= 0 || playerController.gameHasEnded) {//|| endController.gameHasEnded) {
+								gameEnded = true;
 						}
 				}
 				if (!gameHasStarted) {
 						GUI.ModalWindow (0, new Rect (0, 0, Screen.width, Screen.height), SpawnInstructionsWindow, "");
-				} else if (gameHasEnded) {
+				} else if (gameEnded) {
 						GUI.ModalWindow (1, new Rect (0, 0, Screen.width, Screen.height), SpawnEndGameWindow, "");
 				} else {
 						var centeredStyle = GUI.skin.GetStyle ("Label");
@@ -39,6 +39,13 @@ public class MainGUI : MonoBehaviour
 						GUI.Label (new Rect (0, 0, 200, 30), "Sanity");
 						GUI.HorizontalScrollbar (new Rect (50, 3, 200, 20), 0, playerController.sanity, 0, 100);
 						GUI.Label (new Rect (0, 20, 200, 30), "Remaining Beacons:");
+						GUI.Label (new Rect (0, 40, 200, 30), "Found Key?");
+						if(playerController.hasKey){
+							GUI.Label (new Rect (150, 40, 200, 30), "Yes");
+							}
+						else{
+							GUI.Label (new Rect (150, 40, 200, 30), "No");
+							}
 						GUI.Label (new Rect (150, 20, 200, 30), (playerController.MAX_BEACON_COUNT - playerController.current_beacon_count).ToString ());
 						GUI.EndGroup ();
 				}

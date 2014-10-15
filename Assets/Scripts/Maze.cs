@@ -81,7 +81,6 @@ public class Maze : MonoBehaviour {
 		}
 
 		Instantiate (endWall, new Vector3 (x, y, 0), Quaternion.identity);
-
 		for (int i = 0; i < numGhosts; i++) {
 			MazeCell cell = GetCell(RandomCoordinates);
 			Vector3 pos = cell.transform.position;

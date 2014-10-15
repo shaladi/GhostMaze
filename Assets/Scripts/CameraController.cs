@@ -15,9 +15,9 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Z)) {
-			camera.fieldOfView += (90f - camera.fieldOfView)/20f;
+			camera.fieldOfView += (70f - camera.fieldOfView)/20f;
 		} else {
-			camera.fieldOfView += (25f - camera.fieldOfView)/20f;
+			camera.fieldOfView += (45f - camera.fieldOfView)/20f;
 		}
 		adjustedOffset = offset;
 		camera.nearClipPlane = Mathf.Max (torus.transform.position.z - transform.position.z + 0.3f, 0.3f);
