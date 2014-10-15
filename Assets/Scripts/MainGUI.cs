@@ -73,7 +73,7 @@ public class MainGUI : MonoBehaviour
 				);
 
 				GUI.skin.button.fontSize = 20;
-				if (GUI.Button (new Rect (Screen.width / 2 - 100, 600, 200, 30), "Can you escape?")) {
+				if (GUI.Button (new Rect (Screen.width / 2 - 100, 510, 200, 30), "Can you escape?")) {
 						Time.timeScale = 1; // starts game
 						gameHasStarted = true;
 				}  

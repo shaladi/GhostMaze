@@ -27,11 +27,28 @@ public class PlayerController : MonoBehaviour {
 	private bool isNearBeacon = false;
 	private bool beaconDestroyed = false;
 	Animator anim;
-	
-	
+
+	// Key Utils
+	public GameObject key;
+	public bool hasKey = false;
+	private bool keyInit = false;
+
+	public Vector3 RandomCoordinates3 {
+		get {
+			return new Vector3(Random.Range(1,2), 
+			                   Random.Range(1,2), transform.position.z); 
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-		
+
+		if (keyInit == false) {
+						keyInit = true;
+						Vector3 pos = RandomCoordinates3;
+						Instantiate (key, pos, Quaternion.identity);
+				}
+
 		/* 
          * Player movement Logic
          */
@@ -130,6 +147,14 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other){
+				if (other.gameObject.tag == "Key") {
+						hasKey = true;
+						Debug.Log ("hello");
+						Destroy (other.gameObject);
+				}
+		}
 	
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.gameObject.tag == "Beacon-Light") {

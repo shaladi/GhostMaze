@@ -22,7 +22,6 @@ public class Maze : MonoBehaviour {
 
 	public int numGhosts;
 	public GhostController Ghosts;
-
 	public IntVector2 RandomCoordinates {
 		get {
 			return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.y));
@@ -89,6 +88,9 @@ public class Maze : MonoBehaviour {
 			// GhostController gh = Instantiate(Ghosts, pos + new Vector3(0.0f, 0.0f, 0.5f), Quaternion.identity) as GhostController;
 			// gh.SetInitialCell(cell);
 		}
+
+//		MazeCell cellKey = GetCell (RandomCoordinates);
+//		Instantiate (key,cellKey,Quaternion.identity);
 
 		dynamic.SetActive (true);
 	}
