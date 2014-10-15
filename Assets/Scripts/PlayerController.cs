@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	
+
+	public Maze maze;
+
 	// Player location
 	public float speed;
 	private Vector2 horizontal;
@@ -157,9 +159,37 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 				if (other.gameObject.tag == "Key") {
 						hasKey = true;
-						Debug.Log ("hello");
 						Destroy (other.gameObject);
+
+						/*
+					     * Remove a random wall from the scene
+					     **/
+						var randomEdgeWallIndex = Random.Range (0, maze.edgeWalls.Count);
+						var thisWall = maze.edgeWalls [randomEdgeWallIndex];
+						Destroy (thisWall.gameObject);
+						
+						// Add the collider for completing the level
+						
+						var x = thisWall.transform.position.x;
+						var y = thisWall.transform.position.y;
+						
+						if (thisWall.direction == (MazeDirection)0) {
+							y += 2;
+							maze.endWall.size = new Vector2(4f, 0.25f);
+						} else if (thisWall.direction == (MazeDirection)1) {
+							x += 2;
+							maze.endWall.size = new Vector2(0.25f, 4f);
+						} else if (thisWall.direction == (MazeDirection)2) {
+							y -= 2;
+							maze.endWall.size = new Vector2(4f, 0.25f);
+						} else if (thisWall.direction == (MazeDirection)3) {
+							x -= 2;
+							maze.endWall.size = new Vector2(0.25f, 4f);
+						}
+						
+						Instantiate (maze.endWall, new Vector3 (x, y, 0), Quaternion.identity);
 				}
+		
 				if (other.gameObject.tag == "endWall") {
 						if (hasKey){
 							gameHasEnded = true;

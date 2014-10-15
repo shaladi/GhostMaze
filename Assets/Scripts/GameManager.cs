@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void BeginGame () {
-		mazeInstance = Instantiate(mazeObject) as Maze;
-		StartCoroutine(mazeInstance.Generate());
+		// mazeInstance = Instantiate(mazeObject) as Maze;
+		StartCoroutine(mazeObject.Generate());
 
 	}
 

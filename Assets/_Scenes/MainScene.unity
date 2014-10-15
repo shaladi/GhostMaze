@@ -1039,6 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926071a8900c0492ca7bf5d8ca14af66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maze: {fileID: 363744298}
   speed: 300
   sanity: 100
   sanityOff: 0
@@ -1047,6 +1048,7 @@ MonoBehaviour:
   key: {fileID: 100000, guid: 429dee276b540da449053552e76e1427, type: 2}
   hasKey: 0
   gameHasEnded: 0
+  cc: {fileID: 0}
 --- !u!95 &619960979
 Animator:
   serializedVersion: 3

@@ -5,9 +5,7 @@ TagManager:
   tags:
   - Beacon
   - Cell
-  - Beacon-Light
-  - Ghost
-  - endWall
+  - EndWall
   - Key
   - 
   Builtin Layer 0: Default
